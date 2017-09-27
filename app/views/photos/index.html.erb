@@ -1,0 +1,22 @@
+<div class="new-photo">
+<%= link_to 'New Photo', new_photo_path %>
+</div>
+<br>
+<% @photos.each do |photo| %>
+<div class="insta-photo">
+  <p>
+    <%= image_tag photo.image_url, alt: photo.comment %>
+  </p>
+  <p class="photo-user">
+    <%= photo.user.email %>
+  </p>
+  <p class="photo-comment">
+    <%= photo.comment %>
+  </p>
+  <p class="photo-links">
+    <%= link_to 'Show', photo %>
+    <%= link_to 'Edit', edit_photo_path(photo) %>
+    <%= link_to 'Destroy', photo, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </p>
+</div>
+<% end %>

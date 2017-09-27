@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Insta</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+  </head>
+
+  <body>
+    <% if current_user %>
+      <p class="welcome"> Welcome <%= current_user.email %>. User ID: <%= current_user.id %></p>
+    <% end %>
+    <% if user_signed_in? %>
+      <p>
+      <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+      </p>
+    <% else %>
+      <p>
+      <%= link_to('Login', new_user_session_path)  %>
+      </p>
+    <% end %>
+
+    <%= yield %>
+
+  </body>
+</html>
